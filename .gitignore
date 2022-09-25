@@ -129,3 +129,6 @@ lib/vendor/composer/
 lib/vendor/lexpress/
 lib/vendor/swiftmailer/
 
+.vscode
+.idea
+*.iml

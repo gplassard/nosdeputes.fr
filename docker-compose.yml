@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    command: --max_allowed_packet=32505856 #(needed for db import)
+    environment:
+      MYSQL_DATABASE: 'nosdeputes'
+      MYSQL_USER: 'nosdeputes'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+  web:
+    build: .
+    volumes:
+      - ./nosdeputes:/var/www/html
+    ports:
+      - '8080:80'
+    expose:
+      - '8080'
+
