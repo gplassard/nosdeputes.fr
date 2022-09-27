@@ -132,3 +132,4 @@ lib/vendor/swiftmailer/
 .vscode
 .idea
 *.iml
+.DS_Store

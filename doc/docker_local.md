@@ -14,7 +14,7 @@ docker-compose up --build --force-recreate web # pour recréer le docker web fro
 # Préchargement des donnéees
 
 ```bash
-wget https://data.regardscitoyens.org/nosdeputes.fr/nosdeputes.fr_donnees.sql.gz -o data/sql/donnees.sql.gz
+wget https://data.regardscitoyens.org/nosdeputes.fr/nosdeputes.fr_donnees.sql.gz -O data/sql/donnees.sql.gz
 gunzip data/sql/donnees.sql.gz
 docker-compose exec db mysql -unosdeputes -ppassword nosdeputes -e 'source /data/sql/donnees.sql'
 ```
