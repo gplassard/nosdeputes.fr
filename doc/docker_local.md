@@ -10,6 +10,8 @@ docker-compose up # démarrer l'ensemble de l'application
 docker-compose up --build web # s'il y a eu des changements dans le Dockerfile
 docker-compose up --build --force-recreate web # pour recréer le docker web from scratch
 docker-compose exec web bash -c "tail -f /var/log/apache2/*" # suivre les logs apaches
+docker-compose exec web bash -c "php symfony cc" # nettoyer le cache symfony
+docker-compose exec mysql mysql -uroot -proot_password # se connectersur la db
 ```
 
 # Setup de l'application
