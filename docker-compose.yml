@@ -9,15 +9,15 @@ services:
       - '8080:80'
     expose:
       - '8080'
-  db:
+  mysql:
     image: mysql:5.7
     restart: always
     command: --max_allowed_packet=32505856 #(needed for db import)
     environment:
-      MYSQL_DATABASE: 'nosdeputes'
-      MYSQL_USER: 'nosdeputes'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'cpc'
+      MYSQL_USER: 'cpc'
+      MYSQL_PASSWORD: 'MOT_DE_PASSE'
+      MYSQL_ROOT_PASSWORD: 'root_password'
     volumes:
       - ./data/sql:/data/sql
     ports:
@@ -28,7 +28,7 @@ services:
     image: phpmyadmin/phpmyadmin
     environment:
       - MYSQL_USERNAME=root
-      - MYSQL_PASSWORD=password
+      - MYSQL_PASSWORD=root_password
       - MYSQL_PORT=3306
     ports:
       - '8081:80'
