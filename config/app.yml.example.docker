@@ -1,0 +1,71 @@
+# default values
+all:
+  base_url: http://www.nosdeputes.fr/
+  secret_key: _______PUT_YOUR_KEY_HERE________
+  legislature: 16
+  # attention : il est important que la date soit entre guillemets
+  debut_legislature: "2022-06-22"
+  fin_legislature: false
+  host_previous_legislature: 2017-2022.nosdeputes.fr
+  host_next_legislature:
+  lock_commentaires: false
+  allow_autoclean_solr: false
+
+  groupes_actuels: >
+    ["LFI", "GDR", "SOC", "ECO", "LIOT", "REN", "MODEM", "HOR", "LR", "RN", "NI"]
+# groupes_infos: ['nom / acro / couleur(R,G,B) / legende / regexp_identifiante', ...]   USE DOUBLE QUOTES
+  groupes_infos: >
+    [
+    "La France Insoumise - NUPES / LFI / 204,42,70 / France Insoumise (NUPES) / insoumise",
+    "Gauche Démocrate et Républicaine - NUPES / GDR / 207,77,39 / PCF & ultramarins (NUPES) / gauche\s*d.*mocrate",
+    "Socialistes et apparentés - NUPES / SOC / 255,149,145 / PS et divers gauche (NUPES) / socialiste",
+    "Écologiste - NUPES / ECO / 151,215,74 / EELV (NUPES) / cologi",
+    "Libertés, Indépendants, Outre-mer et Territoires / LIOT / 216,226,24 / Radicaux, centristes, régionalistes... / libertés|indépendants|territoires",
+    "Renaissance / REN / 255,200,0 / LREM et proches (Majorité gouv.) / renaissance",
+    "Démocrate / MODEM / 255,152,0 / MoDem et indépendants (Majorité gouv.) / démocrate|modem",
+    "Horizons et apparentés / HOR / 55,157,200 / Horizons (Majorité gouv.) / horizons",
+    "Les Républicains / LR / 78,81,212 / LR et UDI / les\s*r.*publicains",
+    "Rassemblement National / RN / 19,57,62 / RN et patriotes / rassemblement|national",
+    "Députés Non Inscrits / NI / 165,165,165 / Non-Inscrits (divers gauche à droite sans groupe) / inscrit|non\s*inscrit"
+    ]
+  groupes_proximite: >
+    ["LFI / GDR", "LFI / SOC", "LFI / ECO", "GDR / SOC", "GDR / ECO", "SOC / ECO", "SOC / LIOT", "LIOT / REN", "LIOT / MODEM", "LIOT / HOR", "REN / MODEM", "REN / HOR", "MODEM / HOR", "HOR / LR", "LR / RN"]
+
+  commissions_permanentes: >
+    [
+    "commission-des-lois-constitutionnelles-de-la-legislation-et-de-l-administration-generale-de-la-republique",
+    "commission-des-finances-de-l-economie-generale-et-du-controle-budgetaire",
+    "commission-des-affaires-economiques",
+    "commission-des-affaires-sociales",
+    "commission-des-affaires-culturelles-et-de-l-education",
+    "commission-des-affaires-etrangeres",
+    "commission-du-developpement-durable-et-de-l-amenagement-du-territoire",
+    "commission-de-la-defense-nationale-et-des-forces-armees"
+    ]
+
+  sfDoctrineActAsTaggablePlugin:
+    triple_distinct:   true
+
+  announce:
+    link:
+    text: ""
+
+  admin_ips: >
+    [
+    ]
+
+  solr:
+    host: solr
+    port: 8080
+    url: /solr_nosdeputes
+    utf8: false
+
+  manet:
+    url: http://example.manet.org/
+
+  analytics_id: false
+  #analytics_id: UA-XXXXXXX-X
+  piwik_domain: false
+  #piwik_domain: stats.regardscitoyens.org
+  piwik_id: false
+  #piwik_id: 2
