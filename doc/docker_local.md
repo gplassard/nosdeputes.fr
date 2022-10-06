@@ -9,8 +9,8 @@
 docker compose up
 # s'il y a eu des changements dans le Dockerfile
 docker compose up --build web
-# pour recréer le docker web from scratch
-docker compose up --build --force-recreate web
+# pour builder le container web sans cache
+docker compose build --no-cache web
 # suivre les logs apaches
 docker compose exec web bash -c "tail -f /var/log/apache2/*"
 # nettoyer le cache symfony
@@ -20,7 +20,7 @@ docker compose exec mysql mysql -uroot -proot_password
 ```
 
 # Setup de l'application
-```
+```bash
 cp config/app.yml.example.docker config/app.yml
 cp config/databases.yml.example.docker config/databases.yml
 cp lib/vendor/SolrServer/solr/conf/solrconfig.xml.example lib/vendor/SolrServer/solr/conf/solrconfig.xml
@@ -49,3 +49,22 @@ docker compose exec web bash -c "bin/indexSolr"
 * nosdeputes.fr : http://localhost:8082
 * phpmyadmin : http://localhost:8081
 * solr : http://localhost:8080/solr_nosdeputes
+
+# Erreurs connues
+
+## Sous windows
+
+Une erreur lors du `docker compose exec web bash -c "make all"` qui proteste
+```
+bin/generate_dbinc.sh: line 2: $'\r': command not found
+bin/generate_dbinc.sh: line 8: $'\r': command not found
+```
+Dû au fait que vos fichiers sont en crlf, vous pouvez
+```bash
+git config  core.autocrlf false
+git rm -rf --cached .
+git reset --hard HEAD
+```
+
+Une erreur dans les logs apache "Unable to parse file "/var/www/html/apps/frontend/config/routing.yml": Unable to parse line 31 (/document/:id)."
+Votre fichier apps/frontend/config/routing.yml a des sauts de ligne en trop pour les routes commencant par le numéro de la legislature, supprimez les sauts de lignes en trop.
